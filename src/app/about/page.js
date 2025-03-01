@@ -11,6 +11,7 @@ import Stats from '@/components/Stats';
 import Head from 'next/head'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
+import MissionVisionValues from '@/components/MissionVisionValues.jsx';
 
 
 export default function Home() {
@@ -69,37 +70,20 @@ export default function Home() {
         />
       </Head>
 
-      <Header />
-      
+      <Header/>
+      <MissionVisionValues/>
+
       <main>
-        <Hero 
-          title="Innovation in Color Technology" 
-          subtitle="Transforming plastics with premium quality color solutions" 
-          ctaText="Explore Our Products"
-          ctaLink="/products"
-        />
         
         
-        <div className="bg-gray-50 py-16 scroll-animate">
-          <Stats 
-            stats={[
-              { value: "25+", label: "Years Experience" },
-              { value: "5000+", label: "Products" },
-              { value: "550+", label: "Clients" },
-              { value: "100+", label: "Markets" }
-            ]}
-          />
-        </div>
         
-        <section id='products'>
-        <Products className="scroll-animate" />
-        </section>
+      
         
-        <Applications className="scroll-animate" />
+       
         
         <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16 px-4 text-center scroll-animate">
           <div className="container mx-auto">
-            <h2 className="text-3xl font-bold mb-4">Custom Color Solutions</h2>
+            <h2 className="text-3xl font-bold mb-4 mt-9">Custom Color Solutions</h2>
             <p className="mb-8 max-w-2xl mx-auto">For your specific requirements we offer a color matching service, tailoring the color to your exact specifications.</p>
             <button className="bg-white text-blue-600 px-8 py-3 rounded-full font-medium hover:bg-blue-50 transition-colors duration-300">
               Contact Our Experts
@@ -107,9 +91,7 @@ export default function Home() {
           </div>
         </div>
         
-        <section id='contact'>
         <ContactForm className="scroll-animate" />
-        </section>
       </main>
 
       <Footer />
