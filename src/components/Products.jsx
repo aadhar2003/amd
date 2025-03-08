@@ -106,7 +106,7 @@ export default function Products({ className }) {
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">{product.name}</h3>
                 <p className="text-gray-600 mb-4">{product.description}</p>
-                <Link href={`/products/${product.category}`} className="text-blue-600 font-medium hover:text-blue-800 transition-colors inline-flex items-center">
+                <Link href={`/${product.category}`} className="text-blue-600 font-medium hover:text-blue-800 transition-colors inline-flex items-center">
                   
                     Read More
                     <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
