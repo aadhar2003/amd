@@ -3,7 +3,7 @@ import React from 'react';
 
 const MissionVisionValues = () => {
   return (
-    <div className="container mx-auto px-4 py-16 max-w-6xl">
+    <div className="container mx-auto px-4  max-w-6xl">
       <div className="text-center mb-12 mt-[50px]">
         <div className="inline-block bg-purple-100 text-purple-600 px-4 py-1 rounded-full text-sm font-medium mb-4">
           OUR PURPOSE

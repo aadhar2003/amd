@@ -2,10 +2,31 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
+const products = [
+  { id: 'pet', name: 'PET Masterbatches' },
+  { id: 'color', name: 'Color Masterbatches' },
+  { id: 'white', name: 'White Masterbatches' },
+  { id: 'black', name: 'Black Masterbatches' },
+  { id: 'special', name: 'Special Masterbatches' },
+  { id: 'additive', name: 'Additive Masterbatches' }
+];
+
+const applications = [
+  'Consumer & Households',
+  'Packaging',
+  'Electrical',
+  'Fibres',
+  'Appliances',
+  'Automotive',
+  'Agriculture & Horticulture'
+];
+
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+  const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const [isApplicationsOpen, setIsApplicationsOpen] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -14,18 +35,6 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  const scrollToSection = (sectionId) => {
-    // Close the mobile menu when a section is clicked
-    setIsMenuOpen(false);
-    
-    // Find the section element by ID
-    const section = document.getElementById(sectionId);
-    
-    // Scroll to the section if it exists
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
@@ -35,17 +44,50 @@ export default function Header() {
             <Image src="/logo.png" alt="ColorTech Solutions Logo" width={180} height={50} />
           </Link>
           
-          <div className="hidden md:flex items-center space-x-1">
-            <Link href="/about" className="px-4 py-2 hover:text-blue-600 transition-colors">About Us</Link>
-            <button onClick={() => scrollToSection('products')} className="px-4 py-2 hover:text-blue-600 transition-colors">
-              Our Products
-            </button>            
-            {/* <Link href="/applications" className="px-4 py-2 hover:text-blue-600 transition-colors">Applications</Link> */}
-            {/* <Link href="/quality" className="px-4 py-2 hover:text-blue-600 transition-colors">Quality & Certification</Link> */}
-           
+          <div className="hidden md:flex items-center space-x-6 relative">
+            <Link href="/about" className="hover:text-blue-600 transition-colors">About Us</Link>
+            
+            {/* Our Products Dropdown */}
+            <div className="relative">
+              <button 
+                onClick={() => setIsProductsOpen(!isProductsOpen)} 
+                className="hover:text-blue-600 transition-colors focus:outline-none"
+              >
+                Our Products ▾
+              </button>
+              {isProductsOpen && (
+                <div className="absolute left-0 mt-2 bg-white shadow-md rounded-md w-56">
+                  {products.map((product) => (
+                    <Link key={product.id} href={`${product.id}`} className="block px-4 py-2 hover:bg-gray-100">
+                      {product.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+            
+            {/* Applications & Markets Dropdown */}
+            <div className="relative">
+              <button 
+                onClick={() => setIsApplicationsOpen(!isApplicationsOpen)} 
+                className="hover:text-blue-600 transition-colors focus:outline-none"
+              >
+                Applications & Markets ▾
+              </button>
+              {isApplicationsOpen && (
+                <div className="absolute left-0 mt-2 bg-white shadow-md rounded-md w-56">
+                  {applications.map((app, index) => (
+                    <Link key={index} href={`#${app.toLowerCase().replace(/ & | /g, '-')}`} className="block px-4 py-2 hover:bg-gray-100">
+                      {app}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+            
             <button 
-              onClick={() => scrollToSection('contact')} 
-              className="ml-4 px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors focus:outline-none"
+              onClick={() => setIsMenuOpen(false)}
+              className="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors focus:outline-none"
             >
               Contact Us
             </button>
@@ -71,30 +113,40 @@ export default function Header() {
           <div className="md:hidden mt-4 bg-white rounded-lg shadow-lg overflow-hidden">
             <nav className="flex flex-col">
               <Link href="/about" className="px-4 py-3 hover:bg-gray-100">About Us</Link>
-              <button 
-                onClick={() => scrollToSection('products')} 
-                className="px-4 py-3 text-left hover:bg-gray-100 focus:outline-none"
-              >
-                Our Products
-              </button>
-              {/* <button 
-                onClick={() => scrollToSection('applications')} 
-                className="px-4 py-3 text-left hover:bg-gray-100 focus:outline-none"
-              >
-                Applications
-              </button> */}
-              {/* <button 
-                onClick={() => scrollToSection('quality')} 
-                className="px-4 py-3 text-left hover:bg-gray-100 focus:outline-none"
-              >
-                Quality & Certification
-              </button> */}
-              <button 
-                onClick={() => scrollToSection('contact')} 
-                className="px-4 py-3 text-left bg-blue-50 text-blue-600 focus:outline-none"
-              >
-                Contact Us
-              </button>
+              
+              {/* Our Products Mobile Dropdown */}
+              <div className="px-4 py-3">
+                <button onClick={() => setIsProductsOpen(!isProductsOpen)} className="text-left w-full hover:bg-gray-100">
+                  Our Products ▾
+                </button>
+                {isProductsOpen && (
+                  <div className="ml-4">
+                    {products.map((product) => (
+                      <Link key={product.id} href={`#${product.id}`} className="block px-4 py-2 hover:bg-gray-100">
+                        {product.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+              
+              {/* Applications & Markets Mobile Dropdown */}
+              <div className="px-4 py-3">
+                <button onClick={() => setIsApplicationsOpen(!isApplicationsOpen)} className="text-left w-full hover:bg-gray-100">
+                  Applications & Markets ▾
+                </button>
+                {isApplicationsOpen && (
+                  <div className="ml-4">
+                    {applications.map((app, index) => (
+                      <Link key={index} href={`#${app.toLowerCase().replace(/ & | /g, '-')}`} className="block px-4 py-2 hover:bg-gray-100">
+                        {app}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+              
+              <Link href="#contact" className="px-4 py-3 bg-blue-50 text-blue-600 focus:outline-none">Contact Us</Link>
             </nav>
           </div>
         )}

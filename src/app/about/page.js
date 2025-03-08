@@ -12,6 +12,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import MissionVisionValues from '@/components/MissionVisionValues.jsx';
+import AboutInfo from '@/components/AboutInfo';
 
 
 export default function Home() {
@@ -71,6 +72,7 @@ export default function Home() {
       </Head>
 
       <Header/>
+      <AboutInfo/>
       <MissionVisionValues/>
 
       <main>
