@@ -118,6 +118,18 @@ export default function Header() {
                 </div>
               )}
             </div>
+            <Link
+              href="/plasticCompounds"
+              className="hover:text-blue-600 transition-colors"
+            >
+              Plastic Compounds
+            </Link>
+            <Link
+              href="/quality"
+              className="hover:text-blue-600 transition-colors"
+            >
+              Quality & Certifications
+            </Link>
 
             <button
               onClick={() => scrollToSection("contact")}
@@ -211,11 +223,24 @@ export default function Header() {
                   </div>
                 )}
               </div>
+              <Link
+              href="/plasticCompounds"
+              className="px-4 py-3 hover:bg-gray-100"
+            >
+              Plastic Compounds
+            </Link>
+            <Link
+              href="/quality"
+              className="px-4 py-3 hover:bg-gray-100"
+            >
+              Quality & Certifications
+            </Link>
+              
 
               {/* <Link href="#contact" className="px-4 py-3 bg-blue-50 text-blue-600 focus:outline-none">Contact Us</Link> */}
               <button
                 onClick={() => scrollToSection("contact")}
-                className="ml-4 px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors focus:outline-none"
+                className="px-6 py-2 bg-blue-600 text-white  hover:bg-blue-700 transition-colors focus:outline-none"
               >
                 Contact Us
               </button>
