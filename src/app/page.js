@@ -41,7 +41,7 @@ export default function Home() {
         <title>ColorTech Solutions | Premium Color Masterbatch Manufacturer</title>
         <meta name="description" content="Leading manufacturer of high-quality color masterbatches for plastic products. Custom solutions for multiple industries including packaging, consumer goods, and automotive." />
         <meta name="keywords" content="color masterbatch, plastic additives, manufacturing, custom colors" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
         
         {/* Open Graph tags for better social sharing */}
         <meta property="og:title" content="ColorTech Solutions | Premium Masterbatch Manufacturer" />

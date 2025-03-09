@@ -109,7 +109,7 @@ export default function Header() {
                   {applications.map((app, index) => (
                     <Link
                       key={index}
-                      href={`#${app.toLowerCase().replace(/ & | /g, "-")}`}
+                      href={`${app.toLowerCase().replace(/ & | /g, "-")}`}
                       className="block px-4 py-2 hover:bg-gray-100"
                     >
                       {app}
